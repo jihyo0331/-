@@ -17,7 +17,7 @@ def get_db():
     finally:
         db.close()
 
-
+#root domain
 @app.get("/")
 def read_root():
     return {"message": "Hello, World!"}
@@ -106,6 +106,7 @@ def create_code(language: str, code: str, owner_id: int, db: Session = Depends(g
     db.commit()
     db.refresh(code)
     return code
+
 
 @app.get("/codes/{code_id}")
 def read_code(code_id: int, db: Session = Depends(get_db)):
