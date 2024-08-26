@@ -1,17 +1,18 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import pymysql
-# Replace 'username', 'password', 'host', 'port' and 'database_name' with actual values
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:jihyo002%40@localhost:3306/tajahakdang"
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
-# Dependency for getting a session, to be used in FastAPI routes
 def get_db():
     db = SessionLocal()
     try:
