@@ -75,3 +75,4 @@ def get_user_speed(user_id: int, db: Session = Depends(get_db)):
 def get_all_user_rankings(db: Session = Depends(get_db)):
     users = db.query(User).order_by(User.ranking).all()
     return [{"id": user.id, "name": user.name, "ranking": user.ranking} for user in users]
+
