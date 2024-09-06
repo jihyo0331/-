@@ -8,7 +8,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(10), nullable=False, unique=True)
-    password = Column(String(60), nullable=False)  # Hashed password
+    password = Column(String(255), nullable=False)
     ranking = Column(Integer, unique=True)
     speed = Column(Integer)
     accuracy = Column(Float)
