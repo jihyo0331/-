@@ -19,3 +19,7 @@ def read_code(code_id: int, db: Session = Depends(get_db)):
     if not code:
         raise HTTPException(status_code=404, detail="Code not found")
     return code
+
+
+
+
